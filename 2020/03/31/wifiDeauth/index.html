@@ -39,8 +39,8 @@ gtag('config', 'xx-xxxxxxx-xx');</script><script src="https://www.unpkg.com/vali
 <li><p>Run <code>iwconfig</code> again. It should now have a <code>mon</code> at the end. Mine became <code>wlp2s0mon</code>.</p>
 </li>
 <li><p>Run</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">airodump-ng wlp2s0mon<br>``` <br>To see the list of routers and their corresponding WiFi names. Note the BSSID( that<span class="hljs-string">'s the Mac address) of the network of choice, and it'</span>s channel (CH).<br><br>5. Run<br>```bash<br>airodump-ng wlan0mon --bssid [routers BSSID here]--channel [routers channel here]<br></code></pre></td></tr></table></figure>
-<p>to see the devices connected to this WiFi. These appear under “Station”. It’s the mac address of the device</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">airodump-ng wlp2s0mon<br>``` <br><br>To see the list of routers and their corresponding WiFi names. Note the BSSID( that<span class="hljs-string">'s the Mac address) of the network of choice, and it'</span>s channel (CH).<br><br>5. Run<br>```bash<br>airodump-ng wlan0mon --bssid [routers BSSID here]--channel [routers channel here]<br></code></pre></td></tr></table></figure>
+<p>to see the devices connected to this WiFi. These appear under “Station”. It’s the mac address of the device.</p>
 </li>
 </ol>
 <p>To find out what the device is, google the first 3 sections of the device’s mac address, and you can see the device manufacturer info and hence be able to identify the device.</p>
