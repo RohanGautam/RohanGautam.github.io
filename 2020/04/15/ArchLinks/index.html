@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"><meta name="description" content="My first Arch installation [ Rohan's Blog ] "><meta name="theme-color" content="#ebc65a"><title>My first Arch installation [ Rohan's Blog ] </title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css"><script src="https://cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js" defer></script><script src="/js/paper.js" defer></script><script src="https://www.googletagmanager.com/gtag/js?id=xx-xxxxxxx-xx" async></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'xx-xxxxxxx-xx');</script><script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js" defer></script><script>window.addEventListener('DOMContentLoaded', () => {
+  tocbot.init({
+    // Where to render the table of contents.
+    tocSelector: '.toc__content',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: '.article__content',
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    // For headings inside relative or absolute positioned containers within content.
+    hasInnerContainers: true,
+    orderedList: false,
+    collapseDepth: 2,
+  });
+})</script><link rel="preload" href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/github.min.css"><link rel="preload" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap"><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css"><meta name="generator" content="Hexo 4.2.0"></head><body><div class="mask-border"></div><div class="head"><div class="head__inner"><h1><a href="/">Rohan's Blog</a></h1><p></p></div></div><div class="paper-container"><div class="main"><div class="location-bar"><div class="line-1"><div class="horizontal-line" style="height: 3px"></div></div><div class="line-2"><div class="horizontal-line" style="height: 1px"></div></div><p class="text">My first Arch installation</p><div class="switch-button"><input class="container_toggle" type="checkbox" id="switch" name="mode"><label for="switch">Toggle</label></div><div class="line-3"><div class="horizontal-line" style="height: 1px"></div></div></div><div class="main__2-col"><article class="post-view__article"><div class="article__infomation"><div class="posts-item"><h2 class="posts-item__title"><a href="">My first Arch installation</a></h2><span class="post__date">2020-04-15</span></div></div><div class="article__content"><h1 id="My-arch-install-story"><a href="#My-arch-install-story" class="headerlink" title="My arch install story"></a>My arch install story</h1><p>I recently installed arch linux on a HP Pavilion 15-au109ne, which my roommate gave to me because Windows had gone bonkers on it(surprise, surprise). This was quite the ordeal, because of the <code>Realtek RTL8723BE</code> wifi card/controller it had, which caused a lot of issues. </p>
+<p>Neither Pop!_OS or Ubuntu (both 19.10) worked quite correctly, even after the fix required to work with this card(which was adding a kernel parameter, linked below). In the end, I decided to go with Arch because : </p>
+<ul>
+<li>Up to date and bleeding edge packages(Including the newest gnome 3.36, which even my laptop doesn’t have). I thought this would help make the laptop actually workable.</li>
+<li>The arch installation process terrified me, and I wanted to learn about it to gain a better understanding of my computer.</li>
+<li>Being able to quote “I use arch btw”</li>
+</ul>
+<p>Anyways, these are the links that helped me in the process.</p>
+<ul>
+<li>The <a href="https://wiki.archlinux.org/index.php/installation_guide#Configure_the_system" target="_blank" rel="noopener">official Arch install guide</a>, that I referred alongside <a href="https://itsfoss.com/install-arch-linux/" target="_blank" rel="noopener">this</a> article on It’s FOSS.</li>
+<li>Referred to <a href="https://www.youtube.com/watch?v=1Aup0im7QSM" target="_blank" rel="noopener">this video</a> for learning what mirrors are and how to set them in the arch install process.</li>
+<li>How to check if user is <a href="https://unix.stackexchange.com/a/50787" target="_blank" rel="noopener">sudo or not</a>.</li>
+<li>Adding yourself to <a href="https://bbs.archlinux.org/viewtopic.php?id=133625" target="_blank" rel="noopener">sudoer group</a>. Referred to <a href="https://bbs.archlinux.org/viewtopic.php?id=59846" target="_blank" rel="noopener">this</a> link too.</li>
+<li><a href="https://askubuntu.com/a/546090" target="_blank" rel="noopener">What to do</a> if your <code>home/username</code> does not exist.</li>
+<li>How to <a href="https://bbs.archlinux.org/viewtopic.php?pid=1863992#p1863992" target="_blank" rel="noopener">check for boot errors</a> using <code>journalctl</code></li>
+<li>GNOME terminal not launching <a href="https://unix.stackexchange.com/a/171539" target="_blank" rel="noopener">reason</a>. Fix in <a href="https://wiki.archlinux.org/index.php/Locale#Gnome-terminal_or_rxvt-unicode" target="_blank" rel="noopener">archwiki</a>.</li>
+<li><a href="https://www.reddit.com/r/archlinux/comments/7wmio5/pcie_bus_error_during_installation/du1lupc?utm_source=share&utm_medium=web2x" target="_blank" rel="noopener">This reddit comment</a> and <a href="https://itsfoss.com/pcie-bus-error-severity-corrected/" target="_blank" rel="noopener">this article</a> which I used to fix the <code>PCIE bus error</code> the wifi card was causing. This was done once arch was installed by changing GRUB kernel parameters. </li>
+</ul>
+<p>Extra:</p>
+<ul>
+<li>Installing <a href="https://blackarch.org/downloads.html" target="_blank" rel="noopener">blackarch packages</a> on top of an existing arch install.</li>
+</ul>
+<p>I’m sure you’re all aware that the arch fandom is filled with people who hate microsoft even more than I do. I came across a really HILARIOUS quote in some person’s bio on ArchWiki:</p>
+<blockquote>
+<p>The day Microsoft makes a product that doesn’t suck, is the day they make a vacuum cleaner.</p>
+</blockquote>
+<p>Have a good one folks :D</p>
+</div></article><div class="post-view__sidebar"><div class="sidebar"><div class="tocbot"><h2>Toc</h2><div class="toc__content"></div></div><h2>Links</h2><div class="sidebar__link"><ul><li><a href="https://github.com/RohanGautam" target="_blank" rel="noopener">Github</a></li><li><a href="https://www.linkedin.com/in/rohangautam/" target="_blank" rel="noopener">LinkedIn</a></li></ul></div><h2>Archives</h2><div class="sidebar__archives"><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li></ul></div><h2>Categories</h2><div class="sidebar__categories"></div><h2>Tags</h2><div class="sidebar__tags"></div></div></div></div><div class="horizontal-line" style="height: 1px"></div><div class="main__bottom"><div class="pre-next"><a class="pre-button">No more</a><a class="next-button" href="/2020/03/31/wifiDeauth/">Wifi Deauth Attack</a></div></div></div></div><div class="footer"><span>©️2019-2020 Designed By&nbsp;<strong><a href="https://github.com/random-yang" target="_blank" rel="noopener">RandomYang</a></strong> Powered By&nbsp;</span><strong><a href="https://hexo.io" target="_blank" rel="noopener">hexo</a></strong></div><div class="darkmode-mask" id="darkmode-mask"></div><div class="sidebar__button"></div></body></html>
